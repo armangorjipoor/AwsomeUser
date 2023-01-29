@@ -99,6 +99,7 @@ extension ViewController {
                 .borderWidth(1.0)
                 .borderColor(.black)
                 .borderRadius(10)
+                .tapEffect(.pressLikeStyle)
             
             registerButton.translatesAutoresizingMaskIntoConstraints = false
             registerButton.addTarget(self, action: #selector(registerBtnTap), for: .touchUpInside)

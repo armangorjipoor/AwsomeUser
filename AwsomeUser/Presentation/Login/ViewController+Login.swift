@@ -87,6 +87,7 @@ import UIKit
                 .borderWidth(1.0)
                 .borderColor(.black)
                 .borderRadius(10)
+                .tapEffect(.pressLikeStyle)
             
             loginButton.translatesAutoresizingMaskIntoConstraints = false
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
