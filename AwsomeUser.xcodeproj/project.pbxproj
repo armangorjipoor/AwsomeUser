@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC3C134D298806E9000E9E9E /* View+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C134C298806E8000E9E9E /* View+Home.swift */; };
+		CC3C134F29880F84000E9E9E /* MainView+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C134E29880F83000E9E9E /* MainView+Base.swift */; };
+		CC3C135129881816000E9E9E /* TmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C135029881816000E9E9E /* TmpViewController.swift */; };
+		CC60334C2987B0570056AF18 /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC60334B2987B0570056AF18 /* BackgroundManager.swift */; };
 		CC61272B2985EC8500FCBD78 /* Model+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC61272A2985EC8500FCBD78 /* Model+Login.swift */; };
 		CC9ABFF92984F2DE00C01A34 /* SimpleInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ABFF82984F2DE00C01A34 /* SimpleInputView.swift */; };
 		CC9ABFFB2984FCA400C01A34 /* ViewModel+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ABFFA2984FCA400C01A34 /* ViewModel+Register.swift */; };
@@ -22,6 +26,7 @@
 		CCBB6DE02983D98000B5DD9F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB6DDF2983D98000B5DD9F /* UserManager.swift */; };
 		CCBB6DE32983DC2900B5DD9F /* CDUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB6DE12983DC2900B5DD9F /* CDUser+CoreDataClass.swift */; };
 		CCBB6DE42983DC2900B5DD9F /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB6DE22983DC2900B5DD9F /* CDUser+CoreDataProperties.swift */; };
+		CCC739892986EAC800A64D94 /* AWTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC739882986EAC800A64D94 /* AWTextField.swift */; };
 		CCDEE39829864B7C0008C9E8 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEE39729864B7C0008C9E8 /* AppManager.swift */; };
 		CCDEE39A298655EA0008C9E8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEE399298655EA0008C9E8 /* Date.swift */; };
 		CCDEE39D29866D300008C9E8 /* AGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEE39C29866D300008C9E8 /* AGButton.swift */; };
@@ -62,6 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC3C134C298806E8000E9E9E /* View+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Home.swift"; sourceTree = "<group>"; };
+		CC3C134E29880F83000E9E9E /* MainView+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+Base.swift"; sourceTree = "<group>"; };
+		CC3C135029881816000E9E9E /* TmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmpViewController.swift; sourceTree = "<group>"; };
+		CC60334B2987B0570056AF18 /* BackgroundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
 		CC61272A2985EC8500FCBD78 /* Model+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Login.swift"; sourceTree = "<group>"; };
 		CC9ABFF82984F2DE00C01A34 /* SimpleInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleInputView.swift; sourceTree = "<group>"; };
 		CC9ABFFA2984FCA400C01A34 /* ViewModel+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Register.swift"; sourceTree = "<group>"; };
@@ -77,6 +86,7 @@
 		CCBB6DDF2983D98000B5DD9F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CCBB6DE12983DC2900B5DD9F /* CDUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CCBB6DE22983DC2900B5DD9F /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CCC739882986EAC800A64D94 /* AWTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWTextField.swift; sourceTree = "<group>"; };
 		CCDEE39729864B7C0008C9E8 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		CCDEE399298655EA0008C9E8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CCDEE39C29866D300008C9E8 /* AGButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGButton.swift; sourceTree = "<group>"; };
@@ -128,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC60334A2987B0320056AF18 /* Background Processing */ = {
+			isa = PBXGroup;
+			children = (
+				CC60334B2987B0570056AF18 /* BackgroundManager.swift */,
+			);
+			path = "Background Processing";
+			sourceTree = "<group>";
+		};
 		CC9ABFFC2984FCB900C01A34 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEE1E79298430DC00EF8965 /* ViewController+Home.swift */,
+				CC3C134C298806E8000E9E9E /* View+Home.swift */,
 				CC9AC0012985022E00C01A34 /* ViewModel+Home.swift */,
 				CCA566DE2985D51000415584 /* Model+Home.swift */,
 			);
@@ -168,6 +187,7 @@
 		CCDEE39B29866D0E0008C9E8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				CCC739882986EAC800A64D94 /* AWTextField.swift */,
 				CC9ABFF82984F2DE00C01A34 /* SimpleInputView.swift */,
 				CCDEE39C29866D300008C9E8 /* AGButton.swift */,
 			);
@@ -223,6 +243,7 @@
 		CCDEE3A5298681940008C9E8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CC60334A2987B0320056AF18 /* Background Processing */,
 				CCEA18922982F081000F6153 /* AppDelegate.swift */,
 				CCEE1E7D2984497600EF8965 /* Application.swift */,
 				CCDEE39729864B7C0008C9E8 /* AppManager.swift */,
@@ -310,6 +331,8 @@
 				CC9AC0032985239B00C01A34 /* UserError.swift */,
 				CCDEE39E29866F120008C9E8 /* Alertable.swift */,
 				CCEE1E7329842E1D00EF8965 /* ViewController+Base.swift */,
+				CC3C134E29880F83000E9E9E /* MainView+Base.swift */,
+				CC3C135029881816000E9E9E /* TmpViewController.swift */,
 				CC9ABFFC2984FCB900C01A34 /* Register */,
 				CC9ABFFD298501C400C01A34 /* Login */,
 				CC9ABFFE298501D000C01A34 /* Home */,
@@ -452,16 +475,21 @@
 				CCDEE39829864B7C0008C9E8 /* AppManager.swift in Sources */,
 				CCEE1E6D2984276D00EF8965 /* AppCoordinator.swift in Sources */,
 				CCEE1E7629842F8100EF8965 /* ViewController+Register.swift in Sources */,
+				CC3C135129881816000E9E9E /* TmpViewController.swift in Sources */,
 				CCEE1E7C2984436100EF8965 /* Constant.swift in Sources */,
 				CC9ABFFB2984FCA400C01A34 /* ViewModel+Register.swift in Sources */,
 				CC9AC0042985239B00C01A34 /* UserError.swift in Sources */,
 				CCBB6DE42983DC2900B5DD9F /* CDUser+CoreDataProperties.swift in Sources */,
 				CC9B10B42985925E00FFE505 /* Utils.swift in Sources */,
 				CCEE1E7129842D2900EF8965 /* NameSpace.swift in Sources */,
+				CC3C134D298806E9000E9E9E /* View+Home.swift in Sources */,
+				CC3C134F29880F84000E9E9E /* MainView+Base.swift in Sources */,
 				CCDEE39D29866D300008C9E8 /* AGButton.swift in Sources */,
 				CCEA18932982F081000F6153 /* AppDelegate.swift in Sources */,
 				CCDEE39A298655EA0008C9E8 /* Date.swift in Sources */,
+				CCC739892986EAC800A64D94 /* AWTextField.swift in Sources */,
 				CCBB6DE32983DC2900B5DD9F /* CDUser+CoreDataClass.swift in Sources */,
+				CC60334C2987B0570056AF18 /* BackgroundManager.swift in Sources */,
 				CCEE1E7E2984497600EF8965 /* Application.swift in Sources */,
 				CC9AC0022985022E00C01A34 /* ViewModel+Home.swift in Sources */,
 				CCBB6DD12983C76A00B5DD9F /* UserDataRepository.swift in Sources */,

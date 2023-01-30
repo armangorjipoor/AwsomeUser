@@ -18,9 +18,9 @@ struct AppManager {
         }
     }
     
-    private func logOutUser() {
+     func logOutUser() {
         coordinator.userLogin()
-        clearSavedBGTime()
+//        clearSavedBGTime()
     }
     
     //when user killed no longer need saved enter background time
@@ -44,10 +44,15 @@ struct AppManager {
     
     //Confrim that user logged in or register succesfully
     func didUserInHome() {
+        TMPASTMP.currentCoordinator = coordinator
         Application.shared.isUserFirstLaunch = true
         shouldUserLogOut()
-        Utils.wait(Constants.DESIRED_TIME_KEEP_IN_FORGROUND, {
-            logOutUser()
-        })
+//        Utils.wait(Constants.DESIRED_TIME_KEEP_IN_FORGROUND, {
+//            logOutUser()
+//        })
     }
+}
+
+struct TMPASTMP {
+   static var currentCoordinator: AppCoordinator?
 }

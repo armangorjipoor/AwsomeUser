@@ -19,19 +19,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.coordinator = AppCoordinator(window: window)
 //        }
 //        self.coordinator?.startApp()
-        
+        UNUserNotificationCenter.current().delegate = self
+
+        BackgroundManager.shared.register()
         Application.shared.setup()
         return true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
-        Application.shared.saveUserEnterBackgroundTime()
+        BackgroundManager.shared.scheduleAppRefresh()
+        //        Application.shared.saveUserEnterBackgroundTime()
         PersistentStorage.shared.saveContext()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        print("F")
+//        application.endBackgroundTask(UIBAC)
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner, .sound])
+    }
+}

@@ -9,12 +9,10 @@ import Foundation
 
 class ViewController {}
 
+class MainView {}
+
 class ViewModel {}
 
 struct Repository {}
-
-class TableViewCell {}
-
-class HeaderView {}
 
 struct Model {}

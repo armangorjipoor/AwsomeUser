@@ -7,12 +7,15 @@
 
 import Foundation
 import UIKit
+import UserNotifications
+import os.log
 
+private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "ViewController")
  extension ViewController {
      class Home: ViewController.Base {
          
          //MARK: PROPERTIES
-         private var coordinator: AppCoordinator
+         private weak var coordinator: AppCoordinator?
          private var viewModel: ViewModel.Home
          
          //MARK: VIEWS
@@ -37,13 +40,20 @@ import UIKit
          override func viewDidLoad() {
              super.viewDidLoad()
              viewModel.fetchUser()
-             print("1")
-         }
+             logger.debug(#function)
+
+             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+                 if let error = error {
+                     logger.error("\(error.localizedDescription, privacy: .public)")
+                 }
+             }         }
          
          override func viewWillAppear(_ animated: Bool) {
              Application.shared.isIUserInHomeScreen = true
-             let appManager = AppManager(coordinator: self.coordinator)
-             appManager.didUserInHome()
+             if let coordinator = self.coordinator {
+                 let appManager = AppManager(coordinator: coordinator)
+                 appManager.didUserInHome()
+             }
          }
          
          //MARK: SETUP VIEWS
@@ -109,7 +119,9 @@ import UIKit
          
          //MARK: ACTIONS
          @objc func logoutBtnTap() {
-             coordinator.userLogin()
+             if let coordinator = coordinator {
+                 coordinator.userLogin()                 
+             }
          }
          
          //MARK: BIND

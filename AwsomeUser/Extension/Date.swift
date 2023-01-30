@@ -10,7 +10,7 @@ extension Date {
     
     var dayInYear: Int {
         let cal = Calendar(identifier: .iso8601)
-        return cal.ordinality(of: .day, in: .year, for: self)!
+        return cal.ordinality(of: .day, in: .year, for: self) ?? 0
     }
     
     var milliseconds:Double {
