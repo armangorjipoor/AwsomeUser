@@ -55,11 +55,5 @@ class Application {
     private func determineAppRoute(with window: UIWindow) {
             coordinator = AppCoordinator(window: window, appRoute: .register)
     }
-    
-    // save the time that user enter background
-//    func saveUserEnterBackgroundTime() {
-//        if isIUserInHomeScreen != nil {
-//            userDefault.set(Date.currentDate, forKey: Constants.UD.ENTER_BACKGROUND_TIME_KEY.rawValue)
-//        }
-//    }
+
 }

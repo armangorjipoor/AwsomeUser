@@ -35,17 +35,7 @@ extension BackgroundManager {
     
     func handleTask(_ task: BGTask) {
         scheduleAppRefresh()
-
         show(message: "You have logged Out")
-
-//        let request = performRequest { error in
-//            task.setTaskCompleted(success: error == nil)
-//        }
-//
-//        task.expirationHandler = {
-//            task.setTaskCompleted(success: false)
-//            request.cancel()
-//        }
     }
 
     func scheduleAppRefresh() {
@@ -95,11 +85,6 @@ private extension BackgroundManager {
             }
         }
             })
-//        if let coordinator = TMPASTMP.currentCoordinator {
-//            let appMgr = AppManager(coordinator: coordinator)
-//            print("User in Home so logout him/her")
-//            appMgr.logOutUser()
-//        }
     }
 
 }

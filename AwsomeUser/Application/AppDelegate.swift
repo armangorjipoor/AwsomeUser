@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-//        if let window = window {
-//            self.coordinator = AppCoordinator(window: window)
-//        }
-//        self.coordinator?.startApp()
         UNUserNotificationCenter.current().delegate = self
 
         BackgroundManager.shared.register()
@@ -28,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         BackgroundManager.shared.scheduleAppRefresh()
-        //        Application.shared.saveUserEnterBackgroundTime()
         PersistentStorage.shared.saveContext()
     }
     

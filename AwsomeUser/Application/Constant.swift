@@ -10,8 +10,8 @@ import Foundation
 struct Constants {
     
     // specify time to keep user in home page
-    static let DESIRED_TIME_KEEP_IN_FORGROUND = 5.0
-    static let DESIRED_TIME_KEEP_IN_BACKGROUND = 8.0
+    static let DESIRED_TIME_KEEP_IN_FORGROUND = 15.0
+    static let DESIRED_TIME_KEEP_IN_BACKGROUND = 30.0
     
     //Background Processing
     static let BG_TASK_IDENTIFIER = "com.armanG.AWSomeUser.bgRefresh"
