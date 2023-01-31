@@ -12,7 +12,6 @@ enum AppRoute {
     case login
     case register
 //    case homeScreen
-//    case none
 }
 
 class Application {
@@ -27,7 +26,9 @@ class Application {
     func setup() {
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         determineAppRoute(with: appDelegate.window!)
+        requestNotification()
     }
+    
     var isIUserInHomeScreen: Bool?
     
     var isUserFirstLaunch: Bool? {
@@ -43,14 +44,22 @@ class Application {
         }
     }
     
+    private func requestNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+            if let error = error {
+                notifLogger.error("\(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+    
     private func determineAppRoute(with window: UIWindow) {
             coordinator = AppCoordinator(window: window, appRoute: .register)
     }
     
     // save the time that user enter background
-    func saveUserEnterBackgroundTime() {
-        if isIUserInHomeScreen != nil {
-            userDefault.set(Date.currentDate, forKey: Constants.UD.ENTER_BACKGROUND_TIME_KEY.rawValue)
-        }
-    }
+//    func saveUserEnterBackgroundTime() {
+//        if isIUserInHomeScreen != nil {
+//            userDefault.set(Date.currentDate, forKey: Constants.UD.ENTER_BACKGROUND_TIME_KEY.rawValue)
+//        }
+//    }
 }

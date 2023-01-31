@@ -8,21 +8,16 @@
 import Foundation
 import UIKit
 
- extension ViewController {
+extension ViewController {
     class Login: ViewController.Base, Alertable {
         
         //MARK: PROPERTIES
         public var viewModel: ViewModel.Login?
         private var coordinator: AppCoordinator
         
-        //MARK: VIEWS
-        var userNameInputView: SimpleInputView!
-        var passwordInputView: SimpleInputView!
-        
-        var credentialsStckView: UIStackView!
-        
-        var loginButton: AGButton!
-        var errorLb: UILabel!
+        //MARK: VIEW
+        //view that replace with view controller view
+        var mainView = MainView.Login()
         
         //MARK: INITIALIZER
         init(coordinator: AppCoordinator) {
@@ -36,90 +31,42 @@ import UIKit
             fatalError("This class does not support NSCoder")
         }
         override func viewDidLoad() {
-          super.viewDidLoad()
-
+            super.viewDidLoad()
+            
         }
         
-        //MARK: SETUP VIEWS
+        override func loadView() { self.view = mainView }
+        
+        //MARK: SETUP
         override func setup() {
-            setupViews()
-            layoutViews()
-            setupErrorLbl()
-        }
-        
-        fileprivate func setupErrorLbl() {
-            errorLb = UILabel()
-            errorLb.isHidden = true
-            errorLb.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(errorLb)
-            errorLb.text = "Error"
-            errorLb.textColor = .white
-            errorLb.numberOfLines = 0
-            errorLb.backgroundColor = .red
-        }
-        
-        func setupViews() {
-            userNameInputView = SimpleInputView(labelString: "User Name", type: .default)
-            passwordInputView = SimpleInputView(labelString: "PassWord", type: .numberPad)
-            setupStackView()
-            setupLoginButton()
-        }
-        
-        fileprivate func setupStackView() {
-            credentialsStckView = UIStackView()
-            credentialsStckView.axis = .vertical
-            credentialsStckView.spacing = 15
-            
-            credentialsStckView.addArrangedSubview(userNameInputView)
-            credentialsStckView.addArrangedSubview(passwordInputView)
-            
-            credentialsStckView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(credentialsStckView)
-        }
-        
-        fileprivate func setupLoginButton() {
-            
-            loginButton = AGButton()
-                .backgroundColor(.red)
-                .title("Login")
-                .titleColor(.white)
-                .icon(UIImage(systemName: "lock.fill")!)
-                .borderWidth(1.0)
-                .borderColor(.black)
-                .borderRadius(10)
-                .tapEffect(.pressLikeStyle)
-            
-            loginButton.translatesAutoresizingMaskIntoConstraints = false
-            loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
-            self.view.addSubview(loginButton)
-            
-            NSLayoutConstraint.activate([
-                loginButton.topAnchor.constraint(equalTo: credentialsStckView.bottomAnchor, constant: 10),
-                loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
-                loginButton.heightAnchor.constraint(equalToConstant: 60),
-            ])
+            super.setup()
+            mainView.loginBtn.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
         }
         
         //MARK: ACTIONS
         @objc func loginBtnTap() {
-            if validateForm() {
-                viewModel!.model = Model.Login(userName: userNameInputView.text,
-                                               password: Int16(passwordInputView.text) ?? 0)
+            if isInputsValid() {
+                viewModel!.model = Model.Login(userName: mainView.userNameInptView.text,
+                                               password: Int16(mainView.passwordInptView.text) ?? 0)
                 viewModel!.fetchUserByUserAndPass()
-                let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                debugPrint(path[0])
-            } else {
-                print("Error")
+                Utils.printDocumentDirectory()
             }
-    
+            
         }
-        //MARK: UTIlS
-        func validateForm() -> Bool {
-                // Check that all fields are filled
-            return !userNameInputView.isEmpty && !passwordInputView.isEmpty
+        //MARK: INPUT VALIDATION
+        func isInputsValid() -> Bool {
+            // Check that all fields are filled
+            
+            if mainView.userNameInptView.isEmpty {
+                mainView.userNameInptView.showError()
+                return false
+            } else if mainView.passwordInptView.isEmpty {
+                mainView.passwordInptView.showError()
+                return false
+            } else {
+                return true
             }
-        
+        }
         //MARK: BIND
         override func bind() {
             let _ = viewModel?.loginPublisher
@@ -128,12 +75,7 @@ import UIKit
                     switch comp {
                     case .failure(let error) :
                         guard let self = self else { return }
-                        self.errorLb.isHidden = false
-                        self.errorLb.text = error.description
-                        Utils.wait(2.0, {
-                            self.errorLb.isHidden = true
-                            self.coordinator.userLogin()
-                        })
+                        self.showAlert(title: "Error", message: "Probaly user name or password wrong", completion: nil)
                     case .finished:
                         break
                     }
@@ -144,26 +86,5 @@ import UIKit
                 })
                 .store(in: &subscribers)
         }
-        
-        private func layoutViews() {
-            
-            NSLayoutConstraint.activate([
-                credentialsStckView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-                credentialsStckView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-                credentialsStckView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
-            ])
-            
-        }
-        
-        //MARK: ALERT
-        func showAlert(title: String, message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default, handler: {_ in
-                alert.dismiss(animated: true)
-            })
-            alert.addAction(action)
-            alert.present(self, animated: true)
-        }
     }
-    
 }
